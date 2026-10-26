@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "./base.css" layer(components);
+@import "./refinements.css" layer(components);
+@import "./polish.css" layer(components);
+
+@theme {
+  --color-ink: #171916;
+  --color-gold: #b4935a;
+  --color-gold-light: #c9ac78;
+  --color-paper: #e9e6df;
+  --color-surface: #f0ede7;
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Manrope", sans-serif;
+}

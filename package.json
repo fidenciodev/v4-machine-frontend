@@ -1,18 +1,30 @@
 {
   "name": "v4-machine-frontend",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "Proposta de redesign V4 Machines — catálogo demonstrativo e atendimento WhatsApp.",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.23.4"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/fidenciodev/v4-machine-frontend.git"
   },
   "scripts": {
-    "start": "node server.mjs",
-    "dev": "node server.mjs",
-    "check": "node --check dist/app.js && node --check server.mjs"
+    "start": "astro dev --host 127.0.0.1 --port 4173",
+    "dev": "astro dev --host 127.0.0.1 --port 4173",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1 --port 4173",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "7.4.2",
+    "motion": "14.6.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@tailwindcss/vite": "4.3.3",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.3"
   }
 }

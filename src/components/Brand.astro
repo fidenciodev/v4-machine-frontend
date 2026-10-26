@@ -1,0 +1,11 @@
+---
+interface Props { light?: boolean; }
+const { light = false } = Astro.props;
+---
+<a href="#" class:list={["wordmark", { "wordmark-light": light }]} aria-label="V4 Machines — início">
+  <span class="wordmark-v4">V4<span class="brand-slash">
+    </span>
+  </span>
+  <span class="wordmark-name">MACHINES<span>AUTOS CONSIGNADOS</span>
+  </span>
+</a>

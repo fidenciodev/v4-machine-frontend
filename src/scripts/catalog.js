@@ -76,11 +76,11 @@
     const isFavorite = favoriteIds.has(String(car.id));
     const name = vehicleName(car);
     const label = car.tag || (demo ? 'Referência visual' : car.featured ? 'Seleção V4' : 'Disponível');
-    return `<article class="vehicle-card" style="--card-index:${index % 3}">
+    return `<article class="vehicle-card group relative overflow-hidden rounded-xl bg-surface" style="--card-index:${index % 3}">
       <div class="vehicle-media">
         <button class="vehicle-image-button" type="button" data-open-vehicle="${escape(car.id)}" aria-label="Conhecer ${escape(name)}">
           <img class="vehicle-img" src="${escape(car.image)}" alt="${escape(name)} ${escape(car.year)}" width="720" height="480" loading="lazy" decoding="async">
-        </button>
+        <span class="vehicle-quickview">Ver detalhes ${icon('arrow')}</span></button>
         <span class="vehicle-tag">${escape(label)}</span>
         <button class="favorite-button${isFavorite ? ' is-favorite' : ''}" type="button" data-favorite="${escape(car.id)}" aria-pressed="${isFavorite}" aria-label="${isFavorite ? 'Remover' : 'Adicionar'} ${escape(name)} ${isFavorite ? 'dos' : 'aos'} favoritos">${icon('heart')}</button>
       </div>
@@ -142,6 +142,7 @@
       button.classList.toggle('is-active', selected);
       button.setAttribute('aria-pressed', String(selected));
     });
+    document.dispatchEvent(new CustomEvent('v4:catalog-rendered'));
   }
 
   function filterChanged() {
@@ -209,6 +210,7 @@
       if (activeElement instanceof HTMLElement && activeElement.isConnected) activeElement.focus({ preventScroll: true });
     }, { once: true });
     dialog.showModal();
+    document.dispatchEvent(new CustomEvent('v4:dialog-opened', { detail: dialog }));
     return dialog;
   }
 
@@ -310,19 +312,6 @@
     desktop.addEventListener('change', (event) => { if (event.matches) close(); });
   }
 
-  function setupReveals() {
-    const elements = $$('[data-reveal]');
-    document.documentElement.classList.add('motion-ready');
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-      elements.forEach((element) => element.classList.add('is-visible'));
-      return;
-    }
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
-    }), { threshold: 0.12 });
-    elements.forEach((element) => observer.observe(element));
-  }
-
   function wireEvents() {
     $('#search-input')?.addEventListener('input', filterChanged);
     const submitSearch = () => { filterChanged(); scrollTo('#inventory-grid'); };
@@ -363,7 +352,7 @@
       } catch { /* Ignore malformed cross-tab storage. */ }
     });
     setupMobileMenu();
-    setupReveals();
+
   }
 
   async function init() {

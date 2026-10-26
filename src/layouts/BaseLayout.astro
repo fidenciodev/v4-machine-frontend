@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import IconSprite from '../components/IconSprite.astro';
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta name="generator" content={Astro.generator} />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#121310">
+    <meta name="description" content="Conheça uma nova experiência V4 Machines. Explore veículos, salve seus favoritos e converse com a loja em Itaquaquecetuba, São Paulo.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>V4 Machines — A sua próxima conquista.</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="assets/original-hero.jpg" fetchpriority="high">
+  </head>
+  <body class="min-h-screen bg-paper font-sans text-ink antialiased">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <IconSprite />
+    <Header />
+    <main id="conteudo"><slot /></main>
+    <Footer />
+    <script>
+      import '../scripts/catalog.js';
+      import { setupExperience } from '../scripts/experience';
+      setupExperience();
+    </script>
+  </body>
+</html>

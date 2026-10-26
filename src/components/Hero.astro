@@ -1,0 +1,46 @@
+---
+import Icon from './Icon.astro';
+
+---
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-visual">
+    <img src="assets/original-hero.jpg" alt="Automóvel esportivo preto com reflexos dourados em um showroom" fetchpriority="high" width="1920" height="1080">
+  </div>
+  <div class="hero-shade">
+  </div>
+  <div class="hero-grain">
+  </div>
+  <div class="site-container hero-inner">
+    <div class="hero-content">
+      <p class="eyebrow light">
+        <span>
+        </span> PARA QUEM QUER IR ALÉM</p>
+      <h1 id="hero-title">
+        <span class="hero-line">A sua próxima</span>
+        <span class="hero-line">conquista tem</span>
+        <em class="hero-line">quatro rodas.</em>
+      </h1>
+      <p class="hero-description" data-hero-detail>Cada escolha, uma nova história.<br>Encontre o carro que combina com a sua.</p>
+      <a class="button button-gold" data-hero-detail href="#veiculos">Explore os veículos <Icon name="diagonal" />
+      </a>
+    </div>
+    <div class="hero-bottom">
+      <a href="#veiculos" class="scroll-cue">
+        <span class="scroll-circle">↓</span>
+        <span>SEU PRÓXIMO CAPÍTULO<br>
+          <strong>COMEÇA AQUI</strong>
+        </span>
+      </a>
+      <div class="hero-caption">
+        <span class="caption-line">
+        </span>
+        <p>DESIGN. DESEMPENHO. PERSONALIDADE.<br>
+          <strong>Mais do que dirigir. Sentir.</strong>
+        </p>
+        <span class="hero-number">01<span> / V4</span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <span class="hero-side-label" aria-hidden="true">V4 MACHINES — NOVAS POSSIBILIDADES</span>
+</section>

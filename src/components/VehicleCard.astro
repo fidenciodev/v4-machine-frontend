@@ -1,0 +1,41 @@
+---
+import Icon from './Icon.astro';
+import type { Vehicle } from '../types/vehicle';
+interface Props { car: Vehicle; }
+const { car } = Astro.props;
+const name = `${car.brand} ${car.model}`;
+const price = Number(car.price) > 0
+  ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(car.price!)
+  : 'Sob consulta';
+const km = typeof car.km === 'number' ? `${new Intl.NumberFormat('pt-BR').format(car.km)} km` : car.km || 'Consulte';
+---
+<article class="vehicle-card group relative overflow-hidden rounded-xl bg-surface">
+  <div class="vehicle-media">
+    <button class="vehicle-image-button" type="button" data-open-vehicle={car.id} aria-label={`Conhecer ${name}`}>
+      <img class="vehicle-img" src={car.image} alt={`${name} ${car.year || ''}`} width="720" height="480" loading="lazy" decoding="async" />
+      <span class="vehicle-quickview">Ver detalhes <Icon name="diagonal" />
+      </span>
+    </button>
+    <span class="vehicle-tag">{car.tag || 'DEMONSTRATIVO'}</span>
+    <button class="favorite-button" type="button" data-favorite={car.id} aria-pressed="false" aria-label={`Adicionar ${name} aos favoritos`}>
+      <Icon name="heart" />
+    </button>
+  </div>
+  <div class="vehicle-body">
+    <p class="vehicle-brand">{car.brand}</p>
+    <h3 class="vehicle-title">{car.model}</h3>
+    <p class="vehicle-version">{car.version}</p>
+    <div class="vehicle-specs">
+      <span><Icon name="calendar" /><span>{car.year || 'Consulte'}</span></span>
+      <span><Icon name="gauge" /><span>{km}</span></span>
+      <span><Icon name="gear" /><span>{car.transmission || 'Consulte'}</span></span>
+    </div>
+    <div class="vehicle-price-row">
+      <strong class="vehicle-price">
+        <small>Valor ilustrativo</small>{price}</strong>
+      <button class="vehicle-details" type="button" data-open-vehicle={car.id} aria-label={`Ver detalhes de ${name}`}>
+        <Icon name="diagonal" />
+      </button>
+    </div>
+  </div>
+</article>

@@ -1,75 +1,92 @@
 # V4 Machine — Front-end
 
-Front-end para a **V4 Machines — Autos Consignados**, em Itaquaquecetuba/SP. Interface responsiva em preto, dourado e cinza quente, desenvolvida com HTML, CSS e JavaScript, sem dependências de execução ou etapa de build.
+Site da **V4 Machines — Autos Consignados**, construído com **Astro, Tailwind CSS e Motion**. Catálogo interativo, favoritos, detalhes dos veículos e atendimento pelo WhatsApp, com identidade em preto, dourado e cinza quente.
 
 [Especificações técnicas](docs/SPECIFICATIONS.md) · [Fontes e créditos](docs/ASSETS.md)
 
 ## Executar
 
-Requer Node.js 20 ou superior.
+Requer Node.js **22.23.4 ou superior** e npm. As versões das dependências estão registradas no lockfile.
 
 ```bash
 git clone https://github.com/fidenciodev/v4-machine-frontend.git
 cd v4-machine-frontend
-npm start
+npm ci
+npm run dev
 ```
 
-Abra **http://127.0.0.1:4173**. Não é necessário instalar pacotes. `npm run dev` também inicia o servidor local; `npm run check` verifica a sintaxe do JavaScript.
+Abra **http://127.0.0.1:4173**.
 
-Para escolher outra porta no PowerShell:
+| Comando | Finalidade |
+| --- | --- |
+| `npm run dev` ou `npm start` | Desenvolvimento local com atualização automática |
+| `npm run check` | Verificação dos componentes Astro e TypeScript |
+| `npm run build` | Gerar o site estático em `dist/` |
+| `npm run preview` | Conferir o build de produção localmente |
 
-```powershell
-$env:PORT = '4174'
-npm start
-```
+Para outra porta: `npm run dev -- --port 4174`.
 
 ## Funcionalidades
 
-- Catálogo demonstrativo com busca e filtros por marca, categoria e preço.
-- Favoritos persistidos no navegador e filtro para visualizar os veículos salvos.
+- Catálogo inicial renderizado em HTML, com busca, filtros e carregamento progressivo.
+- Favoritos persistidos no navegador e compartilhados entre abas.
 - Detalhes em modal com ficha, foto e contato contextual.
-- Formulário para iniciar conversa sobre atendimento, troca ou financiamento no WhatsApp.
-- Informações da loja, Instagram e link de rota no Google Maps.
-- Menu móvel, navegação por teclado e respeito à preferência por movimento reduzido.
+- Formulário para conversar sobre atendimento, troca ou financiamento no WhatsApp.
+- Navegação com indicação de seção e progresso da página.
+- Entradas graduais, movimento discreto da foto de abertura e respostas dos cartões ao passar o mouse.
+- Modais animados, indicação visual de favoritos e botões com efeitos de destaque.
+- Layout responsivo, navegação por teclado e respeito à preferência por movimento reduzido.
 
 ## Estrutura
 
 ```text
-dist/
-  assets/           Imagens e ícone usados pelo site; logo original preservado
-  data/stock.json   Dados demonstrativos e contato WhatsApp
-  index.html        Estrutura e conteúdo
-  styles.css        Layout, componentes e responsividade
-  refinements.css   Fundos suaves e ajustes de legibilidade
-  app.js            Catálogo, favoritos, modais e interações
-docs/
-  SPECIFICATIONS.md Arquitetura, requisitos e configuração
-  ASSETS.md         Origem e créditos das imagens
-server.mjs          Servidor HTTP para desenvolvimento local
-package.json        Comandos do projeto
+public/assets/             Fotos, logo e ícone
+src/
+  components/              Seções e componentes reutilizáveis
+  layouts/BaseLayout.astro Documento, fontes, estilos e scripts
+  pages/index.astro        Página principal
+  pages/data/stock.json.ts JSON estático gerado no build
+  data/stock.json          Fonte dos veículos demonstrativos
+  scripts/catalog.js      Busca, filtros, favoritos e contatos
+  scripts/experience.ts   Animações Motion e navegação
+  styles/                 Tema, componentes e refinamentos visuais
+  types/vehicle.ts        Contrato dos veículos
+docs/                     Especificações e créditos
+astro.config.mjs          Astro e integração Tailwind/Vite
+tsconfig.json             Configuração TypeScript
 ```
+
+`dist/` é gerado pelo build e não é versionado. O site usa componentes Astro e JavaScript no navegador, sem dependência de um servidor de aplicação em produção.
 
 ## Personalizar
 
-- **Estoque:** edite `dist/data/stock.json`; contrato nas especificações.
-- **Contato:** atualize `whatsapp` no JSON e os links institucionais em `dist/index.html`.
-- **Visual:** variáveis em `dist/styles.css` e ajustes em `dist/refinements.css`.
-- **Textos e seções:** `dist/index.html`.
+- **Veículos e WhatsApp:** `src/data/stock.json`.
+- **Fotos e logo:** `public/assets/`.
+- **Conteúdo institucional:** componentes em `src/components/`.
+- **Tokens Tailwind:** `src/styles/global.css`.
+- **Cores e componentes:** `base.css`, `refinements.css` e `polish.css` em `src/styles/`.
+- **Movimento:** `src/scripts/experience.ts`.
+
+Ao alterar contatos, confira também os links institucionais dos componentes. O catálogo e o JSON público são gerados a partir da mesma fonte no build.
 
 ## Dados demonstrativos
 
-O catálogo contém **veículos, anos, quilometragens e preços ilustrativos**, sinalizados na interface. Não representa o estoque ou ofertas confirmadas da loja. Antes de lançar comercialmente, substitua os dados e as fotos pelos veículos reais e revise os textos com o cliente.
+Veículos, anos, quilometragens e valores são **ilustrativos** e estão sinalizados na interface. Não representam ofertas ou disponibilidade confirmadas da loja. Substitua dados e fotos pelos veículos reais antes de um lançamento comercial.
 
-Os formulários abrem o WhatsApp; não armazenam nem enviam leads por servidor próprio. O mapa é ilustrativo e tem link para o Google Maps. A marca tipográfica é uma releitura; o logo original está preservado em `dist/assets/v4-logo.png`.
+O formulário abre o WhatsApp; a mensagem é enviada pelo próprio visitante. Não há banco de dados, painel administrativo ou armazenamento de leads. O mapa é ilustrativo e tem link para o Google Maps.
+
+## Publicar
+
+```bash
+npm ci
+npm run check
+npm run build
+```
+
+Configure a hospedagem para servir **`dist/`**. O resultado é estático: HTML, CSS, JavaScript, JSON e imagens. O HTML usa `noindex, nofollow` enquanto o conteúdo for demonstrativo.
 
 ## Verificação
 
-Execute `npm run check` para verificar a sintaxe do aplicativo e do servidor local. Confira também a responsividade, a navegação por teclado, os filtros e os diálogos nos navegadores de destino.
+Além da verificação de tipos e do build, confira filtros combinados, favoritos, abertura e fechamento dos modais, links WhatsApp, teclado e telas pequenas. As animações são desativadas ou reduzidas quando o visitante ativa movimento reduzido no sistema.
 
-## Publicação
-
-Publique o conteúdo de **`dist/`** em uma hospedagem estática. O Node.js é necessário apenas para o servidor local. O HTML contém `noindex, nofollow` enquanto o catálogo usar conteúdo demonstrativo.
-
-Os créditos dos recursos visuais estão em `docs/ASSETS.md`.
-
-O repositório não concede licença de redistribuição para marca, fotos ou material institucional do cliente. Consulte as fontes antes de outro uso.
+O repositório não concede licença de redistribuição de marca ou fotografias. Consulte os créditos antes de reutilizar recursos.

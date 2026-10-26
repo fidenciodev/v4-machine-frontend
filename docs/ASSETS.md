@@ -2,7 +2,7 @@
 
 Informações institucionais consultadas no [site atual da V4 Machines](http://v4machine.com.br/) em 26/10/2026. As fotos do catálogo são referências demonstrativas; não confirmam disponibilidade de veículos.
 
-| Arquivo em `dist/assets/` | Origem / autoria |
+| Arquivo em `public/assets/` | Origem / autoria |
 | --- | --- |
 | `original-hero.jpg` | Material do site atual da V4 Machines |
 | `v4-showroom.jpg` | Fotografia institucional da loja no site atual |
