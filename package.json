@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "description": "Proposta de redesign V4 Machines — catálogo demonstrativo e atendimento WhatsApp.",
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fidenciodev/v4-machine-frontend.git"
+  },
   "scripts": {
     "start": "node server.mjs",
-    "check": "node --check dist/app.js"
+    "dev": "node server.mjs",
+    "check": "node --check dist/app.js && node --check server.mjs"
   }
 }

@@ -3,3 +3,7 @@ artifacts/
 *.log
 .env*
 outputs/
+.project/
+.DS_Store
+Thumbs.db
+Desktop.ini

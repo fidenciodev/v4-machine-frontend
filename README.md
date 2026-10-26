@@ -1,42 +1,75 @@
-# V4 Machines — proposta de front-end
+# V4 Machine — Front-end
 
-Proposta visual responsiva para apresentar ao cliente. HTML, CSS e JavaScript sem dependências de execução ou etapa de build.
+Proposta de redesign para a **V4 Machines — Autos Consignados**, em Itaquaquecetuba/SP. Interface responsiva em preto, dourado e cinza quente, desenvolvida com HTML, CSS e JavaScript, sem dependências de execução ou etapa de build.
 
-## Abrir localmente
+[Ver proposta](https://v4-machine-frontend-studio.goodchord4.chatgpt.site) · [Especificações técnicas](docs/SPECIFICATIONS.md) · [Fontes e créditos](docs/ASSETS.md)
 
-```powershell
-cd v4-machine
+## Executar
+
+Requer Node.js 20 ou superior.
+
+```bash
+git clone https://github.com/fidenciodev/v4-machine-frontend.git
+cd v4-machine-frontend
 npm start
 ```
 
-Abra http://127.0.0.1:4173. Para verificar JavaScript: `npm run check`.
+Abra **http://127.0.0.1:4173**. Não é necessário instalar pacotes. `npm run dev` também inicia o servidor local; `npm run check` verifica a sintaxe do JavaScript.
 
-## O que está pronto
+Para escolher outra porta no PowerShell:
 
-- Identidade em preto, dourado e marfim; abertura com a foto do site atual.
-- Catálogo com busca por texto, marca, preço e categoria.
-- Favoritos persistidos no navegador e filtro de favoritos.
-- Detalhes em modal com ficha, fotos e contato contextual.
-- Formulário para iniciar conversa no WhatsApp sobre atendimento, troca ou financiamento.
-- Navegação móvel, acessibilidade por teclado e redução de movimento.
-- Endereço, WhatsApp e Instagram consultados no site atual.
+```powershell
+$env:PORT = '4174'
+npm start
+```
 
-## Conteúdo demonstrativo
+## Funcionalidades
 
-O site atual não tem estoque público. `dist/data/stock.json` contém veículos, versões, anos, quilometragens e valores **ilustrativos**, claramente sinalizados na interface. Substitua pelos dados reais antes de disponibilizar como site comercial. As imagens de galeria são referências visuais e podem mostrar exemplares diferentes. O mapa é uma ilustração com link para o Google Maps.
+- Catálogo demonstrativo com busca e filtros por marca, categoria e preço.
+- Favoritos persistidos no navegador e filtro para visualizar os veículos salvos.
+- Detalhes em modal com ficha, foto e contato contextual.
+- Formulário para iniciar conversa sobre atendimento, troca ou financiamento no WhatsApp.
+- Informações da loja, Instagram e link de rota no Google Maps.
+- Menu móvel, navegação por teclado e respeito à preferência por movimento reduzido.
 
-Os formulários abrem o WhatsApp; não enviam ou armazenam leads em servidor. As condições de financiamento são tratadas diretamente com a loja. Não foram inventadas avaliações, taxas, garantias ou números comerciais.
+## Estrutura
 
-A marca tipográfica é uma releitura de apresentação. O logo original está preservado em `dist/assets/v4-logo.png` para futura escolha do cliente. A paleta está em `:root` de `dist/styles.css`.
+```text
+dist/
+  assets/           Imagens e ícone usados pelo site; logo original preservado
+  data/stock.json   Dados demonstrativos e contato WhatsApp
+  index.html        Estrutura e conteúdo
+  styles.css        Layout, componentes e responsividade
+  refinements.css   Fundos suaves e ajustes de legibilidade
+  app.js            Catálogo, favoritos, modais e interações
+docs/
+  SPECIFICATIONS.md Arquitetura, requisitos e configuração
+  ASSETS.md         Origem e créditos das imagens
+server.mjs          Servidor HTTP para desenvolvimento local
+package.json        Comandos do projeto
+```
 
-## Fontes e créditos
+## Personalizar
 
-Fonte institucional: http://v4machine.com.br/ (consultado em 26/10/2026). Foto de abertura e fachada pertencem ao material do site atual, usadas na proposta de redesign. Dados e fontes dos assets: `reference-data.json`. Fotografias demonstrativas do Unsplash; autoria e URLs preservadas nesse arquivo. Tipografia: DM Sans e Manrope via Google Fonts.
+- **Estoque:** edite `dist/data/stock.json`; contrato nas especificações.
+- **Contato:** atualize `whatsapp` no JSON e os links institucionais em `dist/index.html`.
+- **Visual:** variáveis em `dist/styles.css` e ajustes em `dist/refinements.css`.
+- **Textos e seções:** `dist/index.html`.
 
-## Publicação
+## Estado da proposta
 
-`dist/` é o diretório estático. O Site da proposta usa uma identidade própria em `.openai/hosting.json`; o domínio atual do cliente não é alterado. Metadados `noindex` evitam indexação deliberada da proposta.
+O catálogo contém **veículos, anos, quilometragens e preços ilustrativos**, sinalizados na interface. Não representa o estoque ou ofertas confirmadas da loja. Antes de lançar comercialmente, substitua os dados e as fotos pelos veículos reais e revise os textos com o cliente.
 
-## Valida??o desta entrega
+Os formulários abrem o WhatsApp; não armazenam nem enviam leads por servidor próprio. O mapa é ilustrativo e tem link para o Google Maps. A marca tipográfica é uma releitura; o logo original está preservado em `dist/assets/v4-logo.png`.
 
-Sintaxe JavaScript e 33 cen?rios funcionais passaram em DOM simulado: filtros, busca, favoritos, carregamento progressivo, detalhes, formul?rio WhatsApp, navega??o m?vel e recupera??o de erro. Os arquivos est?ticos foram verificados por HTTP local. N?o havia navegador dispon?vel nesta sess?o para confirmar renderiza??o visual e comportamento nativo dos di?logos.
+## Validação
+
+A primeira implementação passou em 33 cenários funcionais em DOM simulado, incluindo busca, filtros, favoritos, modais, menu móvel, tratamento de erros e geração dos links WhatsApp. JavaScript, arquivos estáticos e folhas de estilo foram verificados. Os ajustes de contraste e tipografia também passaram na análise de CSS. A renderização visual e o comportamento nativo dos diálogos ainda precisam de revisão em navegador.
+
+## Hospedagem e arquivos locais
+
+Publique o conteúdo de **`dist/`** em uma hospedagem estática. O Node.js é necessário apenas para o servidor local. A proposta existente usa a configuração em `.openai/hosting.json`, sem alterar o domínio atual do cliente. O HTML contém `noindex, nofollow` por se tratar de uma proposta demonstrativa.
+
+Materiais de pesquisa e imagens não utilizadas estão preservados localmente na pasta oculta `.project/`, ignorada pelo Git. Pacotes de publicação ficam em `outputs/`, também ocultos e ignorados. Esses diretórios não são necessários para executar ou clonar o projeto. Os créditos estão em `docs/ASSETS.md`.
+
+O repositório não concede licença de redistribuição para marca, fotos ou material institucional do cliente. Consulte as fontes antes de outro uso.
