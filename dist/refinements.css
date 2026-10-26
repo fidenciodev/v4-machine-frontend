@@ -1,0 +1,146 @@
+/* Softer surfaces and a modest increase in secondary text sizes. */
+:root {
+  --paper: #e9e6df;
+  --surface: #f0ede7;
+  --line: #d2cfc5;
+  --muted: #62665b;
+}
+
+.site-header { background: rgba(233, 230, 223, .97); }
+.promise-strip { background: #dfdcd3; }
+.filter-row, .vehicle-card { background: var(--surface); }
+.vehicle-card { box-shadow: 0 3px 12px #26271804; }
+.vehicle-specs { border-color: var(--line); }
+.vehicle-tag, .favorite-button { background: #eeebe4ed; }
+.favorite-button { border-color: #d7d2c7; }
+.category-tabs button.is-active { background: #ded6c5; }
+.empty-state { background: #dfdcd3; }
+.button-outline:hover, .button-secondary:hover { background: #dcd8cf; }
+.form-field input, .form-field select, .form-field textarea {
+  background: var(--surface);
+  border-color: var(--line);
+}
+.location-map { background: #dedbd0; border-color: var(--line); }
+.map-roads {
+  background-image:
+    linear-gradient(32deg, transparent 48%, #eeebe2 48%, #eeebe2 51%, transparent 51%),
+    linear-gradient(120deg, transparent 48%, #eeebe2 48%, #eeebe2 51%, transparent 51%);
+}
+.road { background: #eeeae1; }
+.road-one { background: #e6d9bc; border-color: #eee8da; }
+.map-open { background: #e9e5dbef; border-color: #d1cdc0; }
+.map-disclaimer { background: #e7e3d8de; color: #696e60; }
+
+.vehicle-brand, .vehicle-version, .vehicle-price small,
+.dialog-note, .dialog-eyebrow, .service-item > p,
+.location-description, .location address small,
+.inventory-count, .inventory-bottom > p, .demo-notice,
+.select-field > span, .service-top,
+.category-tabs button, .section-intro p, .experience-intro {
+  color: #606458;
+}
+
+.topbar { font-size: 11px; }
+.topbar p, .favorites-nav, .nav-contact { font-size: 12px; }
+.desktop-nav a, .button { font-size: 13px; }
+.eyebrow { font-size: 10px; }
+.hero-description { font-size: 14px; }
+.scroll-cue { font-size: 10px; }
+.hero-caption p, .hero-side-label { font-size: 9px; }
+.hero-caption strong { font-size: 13px; }
+.hero-number span { font-size: 11px; }
+.promise-intro { font-size: 10px !important; }
+.promise-inner > span { font-size: 12px; }
+.section-intro p, .experience-intro { font-size: 14px; }
+.text-link { font-size: 12px; }
+.demo-notice { font-size: 10px; flex-wrap: wrap; }
+.demo-notice p { font-size: 12px; }
+.search-field { min-width: 0; }
+.search-field input { font-size: 13px; }
+.select-field > span { font-size: 9px; }
+.select-field select { font-size: 12px; }
+.category-tabs button { font-size: 11px; }
+.categories-row { gap: 12px; }
+.inventory-count { font-size: 11px; }
+.vehicle-tag { font-size: 9px; }
+.vehicle-brand { font-size: 10px; }
+.vehicle-version { font-size: 12px; }
+.vehicle-specs { font-size: 11px; }
+.vehicle-specs small { font-size: 9px; }
+.vehicle-price small, .inventory-bottom > p { font-size: 12px; }
+.inventory-bottom > .text-link { font-size: 12px; }
+.image-caption span { font-size: 9px; }
+.image-caption strong { font-size: 12px; }
+.about-content .eyebrow { font-size: 10px; }
+.about-content > p:not(.eyebrow), .service-item > p { font-size: 13px; }
+.service-top { font-size: 10px; }
+.service-link { font-size: 12px; }
+.contact-banner .eyebrow { font-size: 10px; }
+.contact-banner-action p { font-size: 12px; }
+.location-description { font-size: 13px; }
+.location address { font-size: 12px; }
+.location address small { font-size: 11px; }
+.location-phone { font-size: 13px; }
+.map-label, .label-one { font-size: 10px; }
+.label-two { font-size: 9px; }
+.label-three { font-size: 8px; }
+.map-marker > span:last-child { font-size: 8px; }
+.map-marker strong { font-size: 14px; }
+.map-open { font-size: 11px; }
+.map-disclaimer { font-size: 9px; }
+.footer-bottom { font-size: 10px; }
+.prototype-label { font-size: 8px; }
+.favorite-count { font-size: 10px; }
+.floating-contact > span { font-size: 12px; }
+.dialog-eyebrow, .dialog-specs dt { font-size: 10px; }
+.dialog-specs dd, .dialog-version, .dialog-intro { font-size: 13px; }
+.dialog-note { font-size: 11px; }
+.form-field { font-size: 12px; }
+.form-field input, .form-field select, .form-field textarea { font-size: 14px; }
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .navigation { gap: 20px; }
+  .desktop-nav { gap: 20px; }
+  .nav-actions { gap: 18px; }
+  .desktop-nav a { font-size: 12px; }
+  .nav-contact { font-size: 12px; gap: 14px; padding-inline: 14px; }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .promise-inner > span { font-size: 11px; }
+  .category-tabs button { padding-inline: 10px; }
+  .categories-row { align-items: flex-start; }
+  .inventory-count { padding-top: 8px; }
+  .service-link { font-size: 11px; gap: 12px; }
+  .contact-banner-action .button { font-size: 12px; }
+  .image-caption span { font-size: 8px; }
+  .image-caption strong { font-size: 11px; }
+}
+
+@media (max-width: 640px) {
+  .topbar { font-size: 9px; }
+  .topbar a { font-size: 11px; }
+  .hero .eyebrow, .eyebrow, .about-content .eyebrow { font-size: 9px; }
+  .hero-description { font-size: 12px; }
+  .hero .button, .inventory-bottom .button, .dialog-actions .button { font-size: 12px; }
+  .hero-number span { font-size: 9px; }
+  .scroll-cue { font-size: 8px; }
+  .promise-inner > span { font-size: 10px; }
+  .demo-notice { font-size: 9px; }
+  .demo-notice p { font-size: 11px; }
+  .search-field, .select-field { background: var(--surface); }
+  .search-field input, .select-field select { font-size: 12px; }
+  .category-tabs { justify-content: flex-start; gap: 4px; }
+  .category-tabs button { font-size: 10px; padding-inline: 8px; }
+  .inventory-count { font-size: 10px; }
+  .inventory-bottom > p { font-size: 11px; }
+  .image-caption span { font-size: 8px; }
+  .image-caption strong { font-size: 11px; }
+  .service-top { font-size: 10px; }
+  .service-link { font-size: 12px; }
+  .contact-banner .eyebrow { font-size: 8px; }
+  .contact-banner-action .button { font-size: 12px; }
+  .contact-banner-action p { font-size: 11px; }
+  .footer-bottom { font-size: 10px; }
+  .toast { font-size: 12px; }
+}
