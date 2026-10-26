@@ -1,10 +1,12 @@
 # V4 Machine — Front-end
 
+**[Visualizar a proposta online](https://fidenciodev.github.io/v4-machine-frontend/)**
+
 Site da **V4 Machines — Autos Consignados**, construído com **Astro, Tailwind CSS e Motion**. Catálogo interativo, favoritos, detalhes dos veículos e atendimento pelo WhatsApp, com identidade em preto, dourado e cinza quente.
 
 [Especificações técnicas](docs/SPECIFICATIONS.md) · [Fontes e créditos](docs/ASSETS.md)
 
-## Executar
+## Executar localmente
 
 Requer Node.js **22.23.4 ou superior** e npm. As versões das dependências estão registradas no lockfile.
 
@@ -15,7 +17,7 @@ npm ci
 npm run dev
 ```
 
-Abra **http://127.0.0.1:4173**.
+Após iniciar o servidor, abra `http://127.0.0.1:4173` no próprio computador. Esse endereço é apenas para desenvolvimento local; para ver a proposta sem instalar nada, use o link online no início deste README.
 
 | Comando | Finalidade |
 | --- | --- |
@@ -76,6 +78,12 @@ Veículos, anos, quilometragens e valores são **ilustrativos** e estão sinaliz
 O formulário abre o WhatsApp; a mensagem é enviada pelo próprio visitante. Não há banco de dados, painel administrativo ou armazenamento de leads. O mapa é ilustrativo e tem link para o Google Maps.
 
 ## Publicar
+
+A proposta é publicada automaticamente no **GitHub Pages** a cada push na branch `main`, pelo workflow `.github/workflows/deploy-pages.yml`. O link também está no campo Website do repositório.
+
+O workflow define `DEPLOY_TARGET=github-pages` para gerar os caminhos corretos em `/v4-machine-frontend/`. Em outras hospedagens, o build padrão continua usando a raiz do domínio.
+
+Para gerar o build padrão manualmente:
 
 ```bash
 npm ci

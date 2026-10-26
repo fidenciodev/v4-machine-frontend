@@ -85,6 +85,10 @@ Node.js 22.23.4+ e npm. Execute `npm ci` para instalar as versões do lockfile. 
 
 O resultado publicado usa somente arquivos estáticos de `dist/`. Sirva por HTTP/HTTPS: abrir por `file://` pode impedir o carregamento do JSON. Os servidores locais escutam apenas em `127.0.0.1`.
 
+## Publicação online
+
+GitHub Pages: https://fidenciodev.github.io/v4-machine-frontend/ . O workflow `.github/workflows/deploy-pages.yml` verifica e compila o projeto, e publica o resultado a cada push em `main`. `DEPLOY_TARGET=github-pages` ativa o `site` e o `base` específicos dessa hospedagem no Astro. O build padrão mantém a base `/` para outras hospedagens.
+
 ## Revisão antes do lançamento comercial
 
 - Substituir exemplos, preços e fotos pelos dados reais do estoque.
