@@ -17,7 +17,7 @@ Proposta de front-end para a V4 Machines, valorizando os veículos e facilitando
 | Desenvolvimento | Servidor HTTP em Node.js com módulos nativos |
 | Publicação | Arquivos estáticos de `dist/`, sem etapa de build |
 
-Não há banco de dados, painel administrativo, integração de estoque ou processamento de pagamentos. O acesso privado da hospedagem é uma configuração externa ao front-end.
+Não há banco de dados, painel administrativo, integração de estoque ou processamento de pagamentos.
 
 ## Componentes
 

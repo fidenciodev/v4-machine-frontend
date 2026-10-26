@@ -19,4 +19,4 @@ Informações institucionais consultadas no [site atual da V4 Machines](http://v
 
 Tipografia: **DM Sans** e **Manrope**, via Google Fonts. Ícones de interface são SVGs de traço incluídos no HTML e no JavaScript.
 
-A reutilização de imagens ou marca deve observar os direitos e condições das respectivas fontes. A presença no repositório não altera esses direitos. Materiais de pesquisa não utilizados estão preservados localmente na pasta oculta `.project/`, fora do versionamento atual.
+A reutilização de imagens ou marca deve observar os direitos e condições das respectivas fontes. A presença no repositório não altera esses direitos.
